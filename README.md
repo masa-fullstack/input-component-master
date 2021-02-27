@@ -37,7 +37,7 @@
 
 ## Overview
 
-![screenshot](./images/demo.gif)
+![screenshot](./images/demo.png)
 
 Developed with NextJS + Tailwindcss.<br/>
 <br/>
