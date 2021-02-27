@@ -1,10 +1,8 @@
-// import Layout from '../component/Layout'
-
 import Button from '../component/Button'
 import Label from '../component/Label'
 import Layout from '../component/Layout'
 
-export const Home = (): JSX.Element => (
+const Home = (): JSX.Element => (
   <Layout title="Buttons">
     <div className="grid grid-cols-4 gap-10">
       <div className="col-span-4">
