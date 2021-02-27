@@ -26,41 +26,55 @@ const Button: React.FC<Props> = ({
   color,
 }) => {
   //base color setting (Tailwindcss className)
-  let baseBgColor = ''
+  let baseBgClassName = ''
   let baseTextClassName = ''
-  let baseHoverClassName = ''
+  let baseBorderClassName = ''
+  let textClassName = ''
+  let hoverClassName = ''
 
   switch (color) {
     case 'default':
-      baseBgColor = 'gray-300'
-      baseTextClassName = 'text-gray-800'
-      baseHoverClassName = 'bg-gray-400'
+      baseBgClassName = 'bg-gray-300'
+      baseTextClassName = 'text-gray-300'
+      baseBorderClassName = 'border-gray-300'
+      textClassName = 'text-gray-800'
+      hoverClassName = 'bg-gray-400'
       break
     case 'primary':
-      baseBgColor = 'blue-600'
-      baseTextClassName = 'text-white'
-      baseHoverClassName = 'bg-blue-800'
+      baseBgClassName = 'bg-blue-600'
+      baseTextClassName = 'text-blue-600'
+      baseBorderClassName = 'border-blue-600'
+      textClassName = 'text-white'
+      hoverClassName = 'bg-blue-800'
       break
     case 'secondary':
-      baseBgColor = 'gray-500'
-      baseTextClassName = 'text-white'
-      baseHoverClassName = 'bg-gray-700'
+      baseBgClassName = 'bg-gray-500'
+      baseTextClassName = 'text-gray-500'
+      baseBorderClassName = 'border-gray-500'
+      textClassName = 'text-white'
+      hoverClassName = 'bg-gray-700'
       break
     case 'danger':
-      baseBgColor = 'red-600'
-      baseTextClassName = 'text-white'
-      baseHoverClassName = 'bg-red-800'
+      baseBgClassName = 'bg-red-600'
+      baseTextClassName = 'text-red-600'
+      baseBorderClassName = 'border-red-600'
+      textClassName = 'text-white'
+      hoverClassName = 'bg-red-800'
       break
     default:
       //variantが指定されている場合は、色指定なしてでも青色になる
       if (variant) {
-        baseBgColor = 'blue-600'
-        baseTextClassName = 'text-blue-800'
-        baseHoverClassName = 'bg-blue-200'
+        baseBgClassName = 'bg-blue-600'
+        baseTextClassName = 'text-blue-600'
+        baseBorderClassName = 'border-blue-600'
+        textClassName = 'text-blue-800'
+        hoverClassName = 'bg-blue-200'
       } else {
-        baseBgColor = 'gray-300'
-        baseTextClassName = 'text-gray-800'
-        baseHoverClassName = 'bg-gray-400'
+        baseBgClassName = 'bg-gray-300'
+        baseTextClassName = 'text-gray-300'
+        baseBorderClassName = 'border-gray-300'
+        textClassName = 'text-gray-800'
+        hoverClassName = 'bg-gray-400'
       }
       break
   }
@@ -69,15 +83,15 @@ const Button: React.FC<Props> = ({
   let variantClassName
   switch (variant) {
     case 'outline':
-      variantClassName = 'border-2 bg-white border-' + baseBgColor
+      variantClassName = 'border-2 bg-white ' + baseBorderClassName
       if (disabled == false) {
         variantClassName +=
-          ' text-' +
-          baseBgColor +
+          ' ' +
+          baseTextClassName +
           ' foucus:' +
-          baseHoverClassName +
+          hoverClassName +
           ' hover:' +
-          baseHoverClassName
+          hoverClassName
       } else {
         variantClassName += ' text-gray-400'
       }
@@ -87,26 +101,26 @@ const Button: React.FC<Props> = ({
       variantClassName = 'border-0 bg-white shadow-none'
       if (disabled == false) {
         variantClassName +=
-          ' text-' +
-          baseBgColor +
+          ' ' +
+          baseTextClassName +
           ' foucus:' +
-          baseHoverClassName +
+          hoverClassName +
           ' hover:' +
-          baseHoverClassName
+          hoverClassName
       } else {
         variantClassName += ' text-gray-400'
       }
       break
     default:
-      variantClassName = 'bg-' + baseBgColor
+      variantClassName = baseBgClassName
       if (disabled == false) {
         variantClassName +=
           ' ' +
-          baseTextClassName +
+          textClassName +
           ' foucus:' +
-          baseHoverClassName +
+          hoverClassName +
           ' hover:' +
-          baseHoverClassName
+          hoverClassName
       } else {
         variantClassName += ' text-gray-400'
       }
