@@ -1,6 +1,6 @@
-import Button from '../component/Button'
-import Label from '../component/Label'
-import Layout from '../component/Layout'
+import Layout from '../components/Layout'
+import Label from '../components/Label'
+import Button from '../components/Button'
 
 const Home = (): JSX.Element => (
   <Layout title="Buttons">
