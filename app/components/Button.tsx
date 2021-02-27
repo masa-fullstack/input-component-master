@@ -85,13 +85,7 @@ const Button: React.FC<Props> = ({
     case 'outline':
       variantClassName = 'border-2 bg-white ' + baseBorderClassName
       if (disabled == false) {
-        variantClassName +=
-          ' ' +
-          baseTextClassName +
-          ' foucus:' +
-          hoverClassName +
-          ' hover:' +
-          hoverClassName
+        variantClassName += ` ${baseTextClassName} foucus:${hoverClassName} hover:${hoverClassName}`
       } else {
         variantClassName += ' text-gray-400'
       }
@@ -100,13 +94,7 @@ const Button: React.FC<Props> = ({
     case 'text':
       variantClassName = 'border-0 bg-white shadow-none'
       if (disabled == false) {
-        variantClassName +=
-          ' ' +
-          baseTextClassName +
-          ' foucus:' +
-          hoverClassName +
-          ' hover:' +
-          hoverClassName
+        variantClassName += ` ${baseTextClassName} foucus:${hoverClassName} hover:${hoverClassName}`
       } else {
         variantClassName += ' text-gray-400'
       }
@@ -114,13 +102,7 @@ const Button: React.FC<Props> = ({
     default:
       variantClassName = baseBgClassName
       if (disabled == false) {
-        variantClassName +=
-          ' ' +
-          textClassName +
-          ' foucus:' +
-          hoverClassName +
-          ' hover:' +
-          hoverClassName
+        variantClassName += ` ${textClassName} foucus:${hoverClassName} hover:${hoverClassName}`
       } else {
         variantClassName += ' text-gray-400'
       }
