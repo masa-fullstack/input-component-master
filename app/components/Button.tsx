@@ -25,119 +25,120 @@ const Button: React.FC<Props> = ({
   size,
   color,
 }) => {
-  //base color setting (Tailwindcss className)
-  let baseBgClassName = ''
-  let baseTextClassName = ''
-  let baseBorderClassName = ''
-  let textClassName = ''
-  let hoverClassName = ''
-
-  switch (color) {
-    case 'default':
-      baseBgClassName = 'bg-gray-300'
-      baseTextClassName = 'text-gray-300'
-      baseBorderClassName = 'border-gray-300'
-      textClassName = 'text-gray-800'
-      hoverClassName = 'bg-gray-400'
-      break
-    case 'primary':
-      baseBgClassName = 'bg-blue-600'
-      baseTextClassName = 'text-blue-600'
-      baseBorderClassName = 'border-blue-600'
-      textClassName = 'text-white'
-      hoverClassName = 'bg-blue-800'
-      break
-    case 'secondary':
-      baseBgClassName = 'bg-gray-500'
-      baseTextClassName = 'text-gray-500'
-      baseBorderClassName = 'border-gray-500'
-      textClassName = 'text-white'
-      hoverClassName = 'bg-gray-700'
-      break
-    case 'danger':
-      baseBgClassName = 'bg-red-600'
-      baseTextClassName = 'text-red-600'
-      baseBorderClassName = 'border-red-600'
-      textClassName = 'text-white'
-      hoverClassName = 'bg-red-800'
-      break
-    default:
-      //variantが指定されている場合は、色指定なしてでも青色になる
-      if (variant) {
-        baseBgClassName = 'bg-blue-600'
-        baseTextClassName = 'text-blue-600'
-        baseBorderClassName = 'border-blue-600'
-        textClassName = 'text-blue-800'
-        hoverClassName = 'bg-blue-200'
-      } else {
-        baseBgClassName = 'bg-gray-300'
-        baseTextClassName = 'text-gray-300'
-        baseBorderClassName = 'border-gray-300'
-        textClassName = 'text-gray-800'
-        hoverClassName = 'bg-gray-400'
-      }
-      break
+  //stringArrayからstringが含まれる要素をfilterして返す関数
+  const removeClassName = (string, stringArray) => {
+    const regexp = new RegExp('^' + string + '.*')
+    return stringArray.filter((className) => {
+      return !className.match(regexp)
+    })
   }
-
-  //variant color setting (Tailwindcss className)
-  let variantClassName
-  switch (variant) {
-    case 'outline':
-      variantClassName = 'border-2 bg-white ' + baseBorderClassName
-      if (disabled == false) {
-        variantClassName += ` ${baseTextClassName} foucus:${hoverClassName} hover:${hoverClassName}`
-      } else {
-        variantClassName += ' text-gray-400'
-      }
-
-      break
-    case 'text':
-      variantClassName = 'border-0 bg-white shadow-none'
-      if (disabled == false) {
-        variantClassName += ` ${baseTextClassName} foucus:${hoverClassName} hover:${hoverClassName}`
-      } else {
-        variantClassName += ' text-gray-400'
-      }
-      break
-    default:
-      variantClassName = baseBgClassName
-      if (disabled == false) {
-        variantClassName += ` ${textClassName} foucus:${hoverClassName} hover:${hoverClassName}`
-      } else {
-        variantClassName += ' text-gray-400'
-      }
-      break
-  }
+  //buttonのclassNameに使用する文字列配列
+  let btnClassArray: string[] = ['rounded-lg', 'table']
 
   //shadow setting (Tailwindcss className)
-  const shadowClassName =
-    variant || disableShadow || disabled ? 'shadow-none' : 'shadow'
+  if (variant || disableShadow || disabled) {
+    btnClassArray = [...btnClassArray, 'shadow-none']
+  } else {
+    btnClassArray = [...btnClassArray, 'shadow']
+  }
 
-  //disabled setting (Tailwindcss className)
-  const disabledClassName = disabled ? '' : 'cursor-pointer'
-
-  //size setting (Tailwindcss className)
-  let sizeClassName = ''
-  switch (size) {
-    case 'sm':
-      sizeClassName = 'px-3 py-1'
+  //color setting (Tailwindcss className)
+  switch (color) {
+    case 'default':
+      btnClassArray = [
+        ...btnClassArray,
+        'bg-gray-300',
+        'text-gray-800',
+        'foucus:bg-gray-400',
+        'hover:bg-gray-400',
+      ]
       break
-    case 'md':
-      sizeClassName = 'px-4 py-2'
+    case 'primary':
+      btnClassArray = [
+        ...btnClassArray,
+        'bg-blue-600',
+        'text-white',
+        'border-blue-600',
+        'foucus:bg-blue-800',
+        'hover:bg-blue-800',
+      ]
       break
-    case 'lg':
-      sizeClassName = 'px-5 py-3'
+    case 'secondary':
+      btnClassArray = [
+        ...btnClassArray,
+        'bg-gray-500',
+        'text-white',
+        'border-gray-500',
+        'foucus:bg-gray-700',
+        'hover:bg-gray-700',
+      ]
+      break
+    case 'danger':
+      btnClassArray = [
+        ...btnClassArray,
+        'bg-red-600',
+        'text-white',
+        'border-red-600',
+        'foucus:bg-red-800',
+        'hover:bg-red-800',
+      ]
       break
     default:
-      sizeClassName = 'px-4 py-2'
+      btnClassArray = [
+        ...btnClassArray,
+        'bg-gray-300',
+        'text-gray-800',
+        'foucus:bg-gray-400',
+        'hover:bg-gray-400',
+      ]
       break
   }
+
+  //variant setting (Tailwindcss className)
+  switch (variant) {
+    case 'outline':
+      btnClassArray = removeClassName('bg-', btnClassArray)
+      btnClassArray = [...btnClassArray, 'border-2', 'bg-white']
+      break
+    case 'text':
+      btnClassArray = removeClassName('bg-', btnClassArray)
+      btnClassArray = [...btnClassArray, 'border-0', 'bg-white', 'shadow-none']
+      break
+    default:
+      break
+  }
+
+  //size setting (Tailwindcss className)
+  switch (size) {
+    case 'sm':
+      btnClassArray = [...btnClassArray, 'px-3', 'py-1']
+      break
+    case 'md':
+      btnClassArray = [...btnClassArray, 'px-4', 'py-2']
+      break
+    case 'lg':
+      btnClassArray = [...btnClassArray, 'px-5', 'py-3']
+      break
+    default:
+      btnClassArray = [...btnClassArray, 'px-4', 'py-2']
+      break
+  }
+
+  //disabled setting (Tailwindcss className)
+  if (disabled) {
+    btnClassArray = [...btnClassArray, 'text-gray-400']
+    btnClassArray = removeClassName('hover', btnClassArray)
+    btnClassArray = removeClassName('focus', btnClassArray)
+  } else {
+    btnClassArray = [...btnClassArray, 'cursor-pointer']
+  }
+
+  // creates a string from array items
+  const btnClassName: string = btnClassArray.join(' ')
 
   return (
     <div>
-      <div
-        className={`rounded-lg table ${shadowClassName} ${disabledClassName} ${sizeClassName} ${variantClassName}`}
-      >
+      <div className={btnClassName}>
         <Icon icon={startIcon} />
         {title}
         <Icon icon={endIcon} />
