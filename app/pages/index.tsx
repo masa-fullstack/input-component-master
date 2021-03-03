@@ -1,69 +1,57 @@
 import Layout from '../components/Layout'
 import Label from '../components/Label'
-import Button from '../components/Button'
+import Input from '../components/Input'
 
 const Home = (): JSX.Element => (
-  <Layout title="Buttons">
-    <div className="grid grid-cols-4 gap-10">
-      <div className="col-span-4">
-        <Label>{`<Button />`}</Label>
-        <Button />
+  <Layout title="Inputs">
+    <div className="grid grid-cols-3 gap-10">
+      <div className="col-span-3">
+        <Label>{`<Input />`}</Label>
+        <Input />
       </div>
-      <div className="col-span-4">
-        <Label>{`<Button variant=”outline” />`}</Label>
-        <Button variant="outline" />
+      <div className="col-span-3">
+        <Label>{`<Input error />`}</Label>
+        <Input error />
       </div>
-      <div className="col-span-4">
-        <Label>{`<Button variant=”text” />`}</Label>
-        <Button variant="text" />
-      </div>
-      <div className="col-span-4">
-        <Label>{`<Button disableShadow />`}</Label>
-        <Button disableShadow />
-      </div>
-      <div className="col-span-2">
-        <Label>{`<Button disabled />`}</Label>
-        <Button disabled />
-      </div>
-      <div className="col-span-2">
-        <Label>{`<Button variant="text" disabled />`}</Label>
-        <Button variant="text" disabled />
-      </div>
-      <div className="col-span-2">
-        <Label>{`<Button startIcon="local_grocery_store" />`}</Label>
-        <Button startIcon="local_grocery_store" />
-      </div>
-      <div className="col-span-2">
-        <Label>{`<Button startIcon="local_grocery_store" />`}</Label>
-        <Button endIcon="local_grocery_store" />
+      <div className="col-span-3">
+        <Label>{`<Input disabled />`}</Label>
+        <Input disabled />
       </div>
       <div>
-        <Label>{`<Button size=”sm” />`}</Label>
-        <Button size="sm" />
+        <Label>{`<Input helperText=”Some interesting text” />`}</Label>
+        <Input helperText="Some interesting text" />
       </div>
       <div>
-        <Label>{`<Button size=”md” />`}</Label>
-        <Button size="md" />
-      </div>
-      <div>
-        <Label>{`<Button size=”lg” />`}</Label>
-        <Button size="lg" />
+        <Label>{`<Input helperText=”Some interesting text” error />`}</Label>
+        <Input helperText="Some interesting text" error />
       </div>
       <div className="col-start-1">
-        <Label>{`<Button color=”default” />`}</Label>
-        <Button color="default" />
+        <Label>{`<Input startIcon="phone" />`}</Label>
+        <Input startIcon="phone" />
       </div>
       <div>
-        <Label>{`<Button color=”primary” />`}</Label>
-        <Button color="primary" />
+        <Label>{`<Input endIcon="lock" />`}</Label>
+        <Input endIcon="lock" />
+      </div>
+      <div className="col-start-1">
+        <Label>{`<Input value="text" />`}</Label>
+        <Input value="text" />
+      </div>
+      <div className="col-start-1">
+        <Label>{`<Input size="sm" />`}</Label>
+        <Input size="sm" />
       </div>
       <div>
-        <Label>{`<Button color=”secondary” />`}</Label>
-        <Button color="secondary" />
+        <Label>{`<Input size="md" />`}</Label>
+        <Input size="md" />
       </div>
-      <div>
-        <Label>{`<Button color=”danger” />`}</Label>
-        <Button color="danger" />
+      <div className="col-start-1 col-span-3">
+        <Label>{`<Input fullWidth />`}</Label>
+        <Input fullWidth />
+      </div>
+      <div className="col-start-1 col-span-3">
+        <Label>{`<Input multiline row="4" />`}</Label>
+        <Input multiline row="4" />
       </div>
     </div>
   </Layout>

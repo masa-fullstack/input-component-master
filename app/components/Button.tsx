@@ -1,3 +1,4 @@
+import { removeArrayElement } from '../lib/removeArrayElement'
 import Icon from './Icon'
 
 type Variant = 'outline' | 'text'
@@ -25,13 +26,6 @@ const Button: React.FC<Props> = ({
   size,
   color,
 }) => {
-  //stringArrayからstringが含まれる要素をfilterして返す関数
-  const removeClassName = (string, stringArray) => {
-    const regexp = new RegExp('^' + string + '.*')
-    return stringArray.filter((className) => {
-      return !className.match(regexp)
-    })
-  }
   //buttonのclassNameに使用する文字列配列
   let btnClassArray: string[] = ['rounded-lg', 'table']
 
@@ -97,11 +91,11 @@ const Button: React.FC<Props> = ({
   //variant setting (Tailwindcss className)
   switch (variant) {
     case 'outline':
-      btnClassArray = removeClassName('bg-', btnClassArray)
+      btnClassArray = removeArrayElement('bg-', btnClassArray)
       btnClassArray = [...btnClassArray, 'border-2', 'bg-white']
       break
     case 'text':
-      btnClassArray = removeClassName('bg-', btnClassArray)
+      btnClassArray = removeArrayElement('bg-', btnClassArray)
       btnClassArray = [...btnClassArray, 'border-0', 'bg-white', 'shadow-none']
       break
     default:
@@ -127,8 +121,8 @@ const Button: React.FC<Props> = ({
   //disabled setting (Tailwindcss className)
   if (disabled) {
     btnClassArray = [...btnClassArray, 'text-gray-400']
-    btnClassArray = removeClassName('hover', btnClassArray)
-    btnClassArray = removeClassName('focus', btnClassArray)
+    btnClassArray = removeArrayElement('hover', btnClassArray)
+    btnClassArray = removeArrayElement('focus', btnClassArray)
   } else {
     btnClassArray = [...btnClassArray, 'cursor-pointer']
   }
