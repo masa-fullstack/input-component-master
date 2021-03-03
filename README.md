@@ -12,7 +12,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://input-component-master-murex.vercel.app/">
+    <a href="https://input-component-master-sepia.vercel.app/">
       Solution
     </a>
     <span> | </span>
@@ -73,10 +73,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/masa-fullstack/button-component-master
+$ git clone https://github.com/masa-fullstack/input-component-master
 
 # Change directory
-$ cd button-component-master
+$ cd input-component-master
 
 ```
 
